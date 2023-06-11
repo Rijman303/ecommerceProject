@@ -8,13 +8,14 @@ const Register = ( )=> {
     return (
         <div>
     
-      <h3>Create new account</h3>
+      <h3>Create New Account</h3>
         <Formik
           initialValues={{
+            fullName:'',
             phoneNumber:'',
-            userName: '',
             password: '',
-            email: ''
+            conformPassword: '',
+            email: '',
           }}
           onSubmit={values => {
             const requestOptions = {
@@ -28,22 +29,27 @@ const Register = ( )=> {
         >
           {({ errors, touched }) => (
             <Form>
-              <Field name="phoneNumber" placeholder="phoneNumber"/>
+              <Field name="fullName" placeholder="Full Name"/>
+              {errors.fullName && touched.fullName ? (
+                <div>{errors.fullName}</div>
+              ) : null}
+              <br/>
+              <Field name="phoneNumber" placeholder="Phone Number"/>
               {errors.phoneNumber && touched.phoneNumber ? (
                 <div>{errors.phoneNumber}</div>
               ) : null}
               <br/>
-              <Field name="userName" placeholder="userName"/>
-              {errors.userName && touched.userName ? (
-                <div>{errors.userName}</div>
-              ) : null}
-              <br/>
-              <Field name="password"  type ="password"placeholder="password"/>
+              <Field name="password"  type ="password"placeholder="Password"/>
               {errors.password && touched.password? (
                 <div>{errors.password}</div>
               ) : null}
+                <br/>
+              <Field name="conformPassword"  type ="Password"placeholder="Conform Password"/>
+              {errors.conformPassword && touched.conformPassword? (
+                <div>{errors.conformPassword}</div>
+              ) : null}
               <br/>
-              <Field name="email"  placeholder="email"/>
+              <Field name="email"  placeholder="E-mail"/>
               {errors.email && touched.email ? (
               <div>{errors.email}</div>
                ): null}

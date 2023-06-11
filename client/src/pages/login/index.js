@@ -18,11 +18,10 @@ const Login = ()=> {
    }
     return (
         <div>
-          
+          <h3>Sign In To Your Account </h3>
        <Formik
           initialValues={{
             phoneNumber:'',
-            userName: '',
             password: ''
           }}
           onSubmit={values => {
@@ -31,25 +30,23 @@ const Login = ()=> {
         >
           {({ errors, touched }) => (
             <Form>
-              <Field name="phoneNumber" placeholder="phoneNumber"/>
+              <Field name="phoneNumber" placeholder="Phone Number"/>
               {errors.phoneNumber && touched.phoneNumber ? (
                 <div>{errors.phoneNumber}</div>
               ) : null}
               <br/>
-              <Field name="userName" placeholder="userName"/>
-              {errors.userName && touched.userName ? (
-                <div>{errors.userName}</div>
-              ) : null}
-              <br/>
-              <Field name="password"  type ="password"placeholder="password"/>
+              
+              
+              <Field name="password"  type ="password"placeholder="Password"/>
               {errors.password && touched.password? (
                 <div>{errors.password}</div>
               ) : null}
               <br/>
 
               <button type="submit">Submit</button>
+              <br/>
               <small>Don't have an account yet ?</small>
-              <Link href="/register">sign up</Link>
+              <Link href="/register">Sign Up</Link>
               <br/>
               
             </Form>

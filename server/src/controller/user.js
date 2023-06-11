@@ -27,6 +27,7 @@ const User = require ('../model/user')
       })
     }
   }
+  
 
   const getAllUser =  async (req,res)=>{
     const data = await User.find()
