@@ -5,8 +5,10 @@ const jwt = require('jsonwebtoken');
 
 const registerNewUser =async (req,res)=>{
   const hashPassword =await bcrypt.hash(req.body.password, saltRounds);
-  req.body.password=hashPassword
+  req.body.password = hashPassword
   console.log(hashPassword)
+
+  
     const data = await User.create(req.body)
     if(data) {
       res.json({
@@ -23,7 +25,7 @@ const registerNewUser =async (req,res)=>{
     //  step 3: generate the token for the user
       
      if(data && isMatched ) {
-      const token = jwt.sign({ phoneNumber: req.body.phoneNumber }, process.env.SECRET_KEY ); 
+      const token = jwt.sign({ phoneNumber: req.body.phoneNumber }, process.env.SECRET_KEY );
        res.json({
         isLoggedIn:true,
         msg: "Login Successfully",
